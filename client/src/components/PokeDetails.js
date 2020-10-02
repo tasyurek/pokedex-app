@@ -33,15 +33,17 @@ const PokeDetails = ({ location }) => {
             src={`https://pokeres.bastionbot.org/images/pokemon/${poke.id}.png`}
           />
         </div>
-        {owner ? (
-          <div className="btn" onClick={() => handleRemovePoke(poke.id)}>
-            Remove
-          </div>
-        ) : (
-          <div className="btn" onClick={() => handleAddPoke(poke)}>
-            Add to Bag
-          </div>
-        )}
+        <div className="poke-card__actions">
+          {owner ? (
+            <div className="btn" onClick={() => handleRemovePoke(poke.id)}>
+              Remove
+            </div>
+          ) : (
+            <div className="btn" onClick={() => handleAddPoke(poke)}>
+              Add to Bag
+            </div>
+          )}
+        </div>
       </div>
       <div className="informations-container">
         <h2>{poke.name}</h2>
@@ -96,6 +98,7 @@ const Stats = ({ poke }) => {
   return (
     <div className="informations__stats">
       {poke.stats.map((stat, index) => {
+        if (stat.stat.name === "hp") return null;
         return (
           <div className="box" key={index}>
             <h3>{stat.stat.name}</h3>

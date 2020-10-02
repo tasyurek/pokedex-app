@@ -4,14 +4,38 @@ import axios from "axios";
 import PokeCard from "./PokeCard";
 import useFetchPokes from "../hooks/useFetchPokes";
 import PokeList from "./PokeList";
+import MyPokeCard from "./MyPokeCard";
 
 const PokemonBrowserPage = () => {
   const [limit, setLimit] = React.useState(40);
   const [pokes] = useFetchPokes(limit);
+  const [term, setTerm] = React.useState("");
+  const [searchList, setSearchList] = React.useState(undefined);
+  const [message, setMessage] = React.useState(undefined);
+
+  React.useEffect(() => {
+    if (!term.trim()) {
+      setMessage(undefined);
+      return setSearchList(undefined);
+    }
+  }, [term]);
+
+  const onSearchSubmit = () => {
+    if (!term.trim()) return;
+
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${term.toLowerCase()}`)
+      .then((res) => {
+        setSearchList([res.data]);
+        setMessage(undefined);
+      })
+      .catch((e) => {
+        console.log(e);
+        setMessage("Poke does not found!");
+      });
+  };
 
   if (!pokes) return null;
-
-  console.log(pokes);
 
   window.onscroll = function (ev) {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
@@ -19,11 +43,33 @@ const PokemonBrowserPage = () => {
     }
   };
 
+  console.log(searchList);
+
   return (
-    <div className="poke-card-list">
-      {pokes.map((poke, index) => {
-        return <PokeCard poke={poke} key={index} />;
-      })}
+    <div className="pokemon-browser-page">
+      <div className="input-container">
+        <input
+          value={term}
+          onChange={(e) => setTerm(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.which == 13 || e.keyCode == 13) {
+              onSearchSubmit(term);
+            }
+          }}
+        />
+        {message && <p className="message">{message}</p>}
+      </div>
+      <div className="poke-card-list">
+        {searchList
+          ? searchList.map((poke, index) => {
+              return (
+                <MyPokeCard pokeDetails={poke} isSearch={true} key={index} />
+              );
+            })
+          : pokes.map((poke, index) => {
+              return <PokeCard poke={poke} key={index} />;
+            })}
+      </div>
     </div>
   );
 };

@@ -22,6 +22,36 @@ code {
     monospace;
 }
 
+input {
+  width: 100%;
+}
+
+.input-container {
+  margin-bottom: $l-size;
+  border-bottom: $s-size/3 solid darken($bg-color, 8);
+  border-left: $m-size/3 solid lighten($bg-color, 1);
+  background-color: darken($bg-color, 2);
+  padding: $s-size/2;
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: $s-size / 2;
+    border-right: $s-size/6 solid darken($bg-color, 8);
+    border-top: $s-size/6 solid darken($bg-color, 8);
+
+    &:focus {
+      border-right: $s-size/6 solid darken($bg-color, 2);
+      border-top: $s-size/6 solid darken($bg-color, 2);
+    }
+  }
+  .message {
+    margin: $s-size/3;
+    font-weight: bold;
+    color: darken($bg-color, 48);
+  }
+}
+
 .app-container {
   margin: $s-size;
 }

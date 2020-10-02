@@ -1,9 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { removePoke } from "../actions/myPokes";
+import { addPoke, removePoke } from "../actions/myPokes";
 import AppContext from "../context/app-context";
 
-const MyPokeCard = ({ pokeDetails }) => {
+const MyPokeCard = ({ pokeDetails, isSearch = false }) => {
   const { myPokesDispatch } = React.useContext(AppContext);
   const history = useHistory();
 
@@ -12,6 +12,10 @@ const MyPokeCard = ({ pokeDetails }) => {
       pathname: `/pokemon/${poke.id}`,
       state: { poke, owner: true },
     });
+  };
+
+  const handleAddPoke = (poke) => {
+    myPokesDispatch(addPoke(poke));
   };
 
   const handleRemovePoke = (id) => {
@@ -29,9 +33,16 @@ const MyPokeCard = ({ pokeDetails }) => {
         />
       </div>
       <div className="poke-card__actions">
-        <div className="btn" onClick={() => handleRemovePoke(pokeDetails.id)}>
-          Remove
-        </div>
+        {!isSearch ? (
+          <div className="btn" onClick={() => handleRemovePoke(pokeDetails.id)}>
+            Remove
+          </div>
+        ) : (
+          <div className="btn" onClick={() => handleAddPoke(pokeDetails)}>
+            Add
+          </div>
+        )}
+
         <div className="btn" onClick={() => gotoPokeDetails(pokeDetails)}>
           View
         </div>
