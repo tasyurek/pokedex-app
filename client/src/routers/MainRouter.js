@@ -7,6 +7,8 @@ import PokeDetails from "../components/PokeDetails";
 import PokemonBrowserPage from "../components/PokemonBrowserPage";
 
 const MainRouter = () => {
+  document.title = "Poke Store";
+
   return (
     <BrowserRouter>
       <Navigator />
