@@ -11,6 +11,10 @@ const PokeDetails = ({ location }) => {
   const { poke, owner } = location.state;
   const history = useHistory();
 
+  React.useState(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleAddPoke = (poke) => {
     myPokesDispatch(addPoke(poke));
   };
