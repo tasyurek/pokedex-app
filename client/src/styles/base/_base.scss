@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: $bg-color;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.app-container {
+  margin: $s-size;
+}
+
+.icon-container {
+  padding: $s-size / 2;
+  background-color: #fff;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+
+  .icon {
+    &:first-of-type {
+      margin-right: 8px;
+    }
+  }
+}
+
+.btn {
+  @include noselect;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $s-size/1.6 $m-size;
+  font-weight: 600;
+  width: 100%;
+  color: darken($bg-color, 54);
+  background-color: darken($bg-color, 16);
+  border-bottom: $s-size/3 solid darken($bg-color, 24);
+  &:hover {
+    background-color: darken($bg-color, 12);
+  }
+  &:active {
+    background-color: darken($bg-color, 8);
+    border-bottom: $s-size/4 solid darken($bg-color, 24);
+    border-top: $s-size/12 solid darken($bg-color, 8);
+  }
+}
+
+.icon {
+  height: $m-size;
+  color: darken($bg-color, $amount: 24);
+}
+
+.my-pokes-page {
+  h2 {
+    margin-bottom: $m-size;
+  }
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .app-container {
+    margin: $xxl-size;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

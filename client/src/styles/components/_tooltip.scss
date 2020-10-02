@@ -1,0 +1,41 @@
+.tooltip-container {
+  display: flex;
+  position: relative;
+}
+
+.tooltip-container .tooltip {
+  position: absolute;
+  width: $xxl-size * 1.2;
+  width: 100%;
+  min-height: $xl-size;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  padding: $s-size;
+  // font-size: $ms-size;
+  border-radius: 8px;
+  display: none;
+  align-items: center;
+  background-color: $black;
+  justify-content: center;
+  z-index: 200000000000;
+  animation: tooltip 0.4s ease;
+}
+
+@keyframes tooltip {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.tooltip-container:hover .tooltip {
+  display: flex;
+}
+
+.tooltip--bottom {
+  left: 50%;
+  transform: translate(-50%, 100%);
+  top: $xl-size * 1.6;
+}

@@ -5,7 +5,12 @@ import { ContextDevTool } from "react-context-devtool";
 import MyPokesReducer from "../reducers/myPokes";
 
 const ContextProvider = (props) => {
-  const [myPokes, myPokesDispatch] = React.useReducer(MyPokesReducer, []);
+  let myPokesJSON = localStorage.getItem("my-pokes");
+  let _myPokes = JSON.parse(myPokesJSON);
+  const [myPokes, myPokesDispatch] = React.useReducer(
+    MyPokesReducer,
+    _myPokes ? _myPokes : []
+  );
 
   return (
     <AppContext.Provider value={{ myPokes, myPokesDispatch }}>

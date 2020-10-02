@@ -1,0 +1,63 @@
+.poke-details {
+  display: flex;
+  flex-direction: column;
+  // border: 12px solid darken($bg-color, 4);
+  grid-gap: $m-size;
+  .poke-card {
+    display: grid;
+    grid-gap: $m-size;
+    &:hover {
+      background-color: darken($bg-color, $amount: 2);
+      border-bottom: $m-size/2 solid darken($bg-color, 8);
+      border-left: $m-size/3 solid lighten($bg-color, 1);
+    }
+  }
+  .poke-image-container {
+    padding: $s-size;
+    //  background-color: darken($bg-color, 1);
+    width: 320px;
+    height: auto;
+    min-height: 320px;
+    // display: grid;
+    grid-gap: $s-size;
+    .sub-info {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .poke-image {
+    width: 100%;
+    height: auto;
+  }
+  .informations-container {
+    width: 100%;
+  }
+
+  .informations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    height: fit-content;
+    width: 100%;
+    grid-gap: $s-size;
+  }
+  .informations__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    height: fit-content;
+    grid-gap: $s-size;
+  }
+  .box {
+    padding: $s-size;
+    height: 100%;
+    border: 4px solid darken($bg-color, 4);
+  }
+  h2 {
+    margin: $m-size 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .poke-details {
+    flex-direction: row;
+  }
+}

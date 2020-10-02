@@ -1,0 +1,57 @@
+.poke-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: $m-size;
+}
+
+.poke-card {
+  align-items: center;
+  background-color: darken($bg-color, $amount: 2);
+  border-bottom: $m-size/2 solid darken($bg-color, 8);
+  border-left: $m-size/3 solid lighten($bg-color, 1);
+  row-gap: $s-size/2;
+  // border-radius: 4px;
+  border-bottom-right-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $s-size;
+  height: fit-content;
+  @include noselect;
+  &:hover {
+    // background-color: darken($bg-color, $amount: 1);
+    // border-bottom: $m-size/3 solid darken($bg-color, 8);
+    // border-left: $m-size/4 solid lighten($bg-color, 1);
+  }
+  .poke-name {
+    margin-bottom: $m-size / 2;
+    font-weight: 500;
+  }
+  .poke-image-container {
+    position: relative;
+  }
+
+  .poke-image {
+    height: $xl-size;
+    width: $xl-size;
+    z-index: 1;
+    position: relative;
+  }
+  .poke-shadow {
+    position: absolute;
+    background-color: darken($bg-color, $amount: 4);
+    height: $l-size;
+    width: $l-size;
+    top: $m-size * 1.6;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    border-radius: 50%;
+  }
+  .poke-card__actions {
+    display: flex;
+    width: 100%;
+    column-gap: $s-size/3;
+  }
+}
