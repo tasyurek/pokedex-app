@@ -17,8 +17,8 @@ const Navigator = (props) => {
           <Logo className="icon" />
           <p>Poke Store</p>
         </div>
-        <Link to="/mypokes" className="nav-link">
-          My Pokes
+        <Link to="/mypokemons" className="nav-link">
+          My Pokemons
         </Link>
       </AppContainer>
     </div>

@@ -31,7 +31,7 @@ const PokemonBrowserPage = () => {
       })
       .catch((e) => {
         console.log(e);
-        setMessage("Poke does not found!");
+        setMessage("Pokemon does not found!");
       });
   };
 
@@ -50,6 +50,7 @@ const PokemonBrowserPage = () => {
       <div className="input-container">
         <input
           value={term}
+          placeholder="Find Pokemon..."
           onChange={(e) => setTerm(e.target.value)}
           onKeyPress={(e) => {
             if (e.which == 13 || e.keyCode == 13) {
@@ -59,6 +60,7 @@ const PokemonBrowserPage = () => {
         />
         {message && <p className="message">{message}</p>}
       </div>
+      <h2>Pokemons</h2>
       <div className="poke-card-list">
         {searchList
           ? searchList.map((poke, index) => {

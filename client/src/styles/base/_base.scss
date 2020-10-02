@@ -32,17 +32,27 @@ input {
   border-left: $m-size/3 solid lighten($bg-color, 1);
   background-color: darken($bg-color, 2);
   padding: $s-size/2;
+
   input {
     width: 100%;
     border: none;
     outline: none;
+    font-size: $s-size / 1.2;
+    font-weight: 600;
     padding: $s-size / 2;
     border-right: $s-size/6 solid darken($bg-color, 8);
     border-top: $s-size/6 solid darken($bg-color, 8);
+    color: #6a6a6a;
 
     &:focus {
       border-right: $s-size/6 solid darken($bg-color, 2);
       border-top: $s-size/6 solid darken($bg-color, 2);
+    }
+    &::placeholder {
+      font-size: $s-size / 1.2;
+      font-weight: 600;
+      font-style: italic;
+      opacity: 0.5;
     }
   }
   .message {
@@ -99,6 +109,12 @@ input {
 .my-pokes-page {
   h2 {
     margin-bottom: $m-size;
+  }
+}
+
+.pokemon-browser-page {
+  h2 {
+    margin: $s-size 0;
   }
 }
 

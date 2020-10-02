@@ -15,7 +15,7 @@ const MainRouter = () => {
       <AppContainer>
         <Switch>
           <Route exact path="/" component={PokemonBrowserPage} />
-          <Route exact path="/mypokes" component={MyPokesPage} />
+          <Route exact path="/mypokemons" component={MyPokesPage} />
           <Route exact path="/pokemon/:id" component={PokeDetails} />
         </Switch>
       </AppContainer>

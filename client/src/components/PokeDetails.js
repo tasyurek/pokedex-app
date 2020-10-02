@@ -20,7 +20,7 @@ const PokeDetails = ({ location }) => {
   const handleRemovePoke = (id) => {
     myPokesDispatch(removePoke(id));
     setTimeout(() => {
-      history.push("/mypokes");
+      history.push("/mypokemons");
     }, 250);
   };
 

@@ -9,7 +9,7 @@ const MyPokesPage = () => {
 
   return (
     <div className="my-pokes-page">
-      <h2>My Pokes</h2>
+      <h2>My Pokemons</h2>
 
       {myPokes && (
         <div className="poke-card-list">
