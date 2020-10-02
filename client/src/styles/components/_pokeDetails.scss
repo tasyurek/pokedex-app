@@ -4,12 +4,15 @@
   // border: 12px solid darken($bg-color, 4);
   grid-gap: $m-size;
   .poke-card {
-    display: grid;
+    // display: grid;
     grid-gap: $m-size;
     &:hover {
       background-color: darken($bg-color, $amount: 2);
       border-bottom: $m-size/2 solid darken($bg-color, 8);
       border-left: $m-size/3 solid lighten($bg-color, 1);
+    }
+    h2 {
+      text-align: center;
     }
   }
   .poke-image-container {
@@ -39,6 +42,14 @@
     height: fit-content;
     width: 100%;
     grid-gap: $s-size;
+    .box {
+      align-items: center;
+      display: flex;
+      // width: fit-content;
+      h3 {
+        margin-right: $s-size;
+      }
+    }
   }
   .informations__stats {
     display: grid;

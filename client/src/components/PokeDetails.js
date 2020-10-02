@@ -1,10 +1,8 @@
 import React from "react";
-import { ReactComponent as RulerIcon } from "../assets/ruler-vertical-solid.svg";
-import { ReactComponent as TypeIcon } from "../assets/paw-solid.svg";
-import { addPoke, removePoke } from "../actions/myPokes";
 import AppContext from "../context/app-context";
 import { useHistory } from "react-router-dom";
 import useStatDetails from "../hooks/useStatDetails";
+import { addPoke, removePoke } from "../actions/myPokes";
 
 const PokeDetails = ({ location }) => {
   const { myPokes, myPokesDispatch } = React.useContext(AppContext);
@@ -31,6 +29,7 @@ const PokeDetails = ({ location }) => {
   return (
     <div className="poke-details">
       <div className="poke-card">
+        <h2>{poke.name}</h2>
         <div className="poke-image-container">
           <img
             className="poke-image"
@@ -48,16 +47,21 @@ const PokeDetails = ({ location }) => {
             </div>
           )}
         </div>
-      </div>
-      <div className="informations-container">
-        <h2>{poke.name}</h2>
         <div className="informations">
-          <Abilities poke={poke} />
           <Types poke={poke} />
+          <Abilities poke={poke} />
           <Height poke={poke} />
         </div>
-        <h2>Stats</h2>
-        <Stats poke={poke} />
+      </div>
+      <div className="informations-container">
+        <div className="informations-container">
+          <h2>Stats</h2>
+          <Stats poke={poke} />
+        </div>
+        <div className="informations-container">
+          <h2>Moves</h2>
+          <Moves poke={poke} />
+        </div>
       </div>
     </div>
   );
@@ -70,9 +74,11 @@ const Abilities = ({ poke }) => {
   return (
     <div className="box">
       <h3>Abilities</h3>
-      {abilities.map((ability, index) => (
-        <p key={index}>{ability.name}</p>
-      ))}
+      <div>
+        {abilities.map((ability, index) => (
+          <p key={index}>{ability.name}</p>
+        ))}
+      </div>
     </div>
   );
 };
@@ -82,9 +88,11 @@ const Types = ({ poke }) => {
   return (
     <div className="box">
       <h3>Types</h3>
-      {types.map((type, index) => (
-        <p key={index}>{type.name}</p>
-      ))}
+      <div>
+        {types.map((type, index) => (
+          <p key={index}>{type.name}</p>
+        ))}
+      </div>
     </div>
   );
 };
@@ -125,6 +133,38 @@ const StatDetails = ({ url }) => {
     <div>
       {statDetails.slice(4).map((detail, index) => {
         return <p key={index}>{detail.move.name}</p>;
+      })}
+    </div>
+  );
+};
+
+const Moves = ({ poke }) => {
+  const step = 15;
+  const moves_1 = poke.moves.slice(0, step);
+  const moves_2 = poke.moves.slice(step, step * 2);
+  const moves_3 = poke.moves.slice(step * 2, step * 3);
+  const moves_4 = poke.moves.slice(step * 3, step * 4);
+  const moves = [
+    { index: 0, moves: moves_1 },
+    { index: 1, moves: moves_2 },
+    { index: 2, moves: moves_3 },
+    { index: 3, moves: moves_4 },
+  ];
+
+  return (
+    <div className="informations__stats">
+      {moves.map((item, index) => (
+        <MoveList moves={item.moves} key={index} />
+      ))}
+    </div>
+  );
+};
+
+const MoveList = ({ moves }) => {
+  return (
+    <div className="box">
+      {moves.map((move, index) => {
+        return <p key={index}>{move.move.name}</p>;
       })}
     </div>
   );
