@@ -5,6 +5,11 @@
   font-family: "Poppins", sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 body {
   background-color: $bg-color;
@@ -64,6 +69,8 @@ input {
 
 .app-container {
   margin: $s-size;
+  height: 100%;
+  flex: 1;
 }
 
 .icon-container {
@@ -78,6 +85,19 @@ input {
       margin-right: 8px;
     }
   }
+}
+
+.footer {
+  height: $xxl-size * 2;
+  width: 100%;
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: $bg-color;
+  background-color: #20232a;
 }
 
 .btn {

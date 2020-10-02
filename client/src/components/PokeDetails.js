@@ -144,12 +144,18 @@ const Moves = ({ poke }) => {
   const moves_2 = poke.moves.slice(step, step * 2);
   const moves_3 = poke.moves.slice(step * 2, step * 3);
   const moves_4 = poke.moves.slice(step * 3, step * 4);
-  const moves = [
+  const moves_5 = poke.moves.slice(step * 4, step * 5);
+  let moves = [
     { index: 0, moves: moves_1 },
     { index: 1, moves: moves_2 },
     { index: 2, moves: moves_3 },
     { index: 3, moves: moves_4 },
+    { index: 4, moves: moves_5 },
   ];
+
+  let k = Math.floor(poke.moves.length / 15);
+
+  moves = moves.slice(0, k + 1);
 
   return (
     <div className="informations__stats">

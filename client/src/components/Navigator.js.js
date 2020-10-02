@@ -15,7 +15,7 @@ const Navigator = (props) => {
       <AppContainer>
         <div className="icon-container" onClick={gotoHome}>
           <Logo className="icon" />
-          <p>Poke Store</p>
+          <p>Pokè Store</p>
         </div>
         <Link to="/mypokemons" className="nav-link">
           My Pokemons
